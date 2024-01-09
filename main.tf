@@ -1,5 +1,5 @@
 resource "google_compute_address" "static" {
-  name = "ip-external-ideasextraordinarias"
+  name = "ip-external-My-First-Project"
 }
 
 resource "google_compute_instance" "bastion_instance" {
