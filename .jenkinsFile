@@ -30,7 +30,7 @@ pipeline {
                     extensions: [[$class: 'CleanCheckout']], 
                     submoduleCfg: [], 
                     userRemoteConfigs: [
-                        [url: 'git@github.com:agustinjaume/jenkins-terraform.git', credentialsId: '']
+                        [url: 'https://github.com/ktonccc/gcp-terraform.git', credentialsId: '']
                         ]])
                 sh 'pwd' 
                 sh 'ls -l'
