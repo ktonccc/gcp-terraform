@@ -41,7 +41,7 @@ pipeline {
          steps {
             //sh 'terraform --version'
             sh 'ls -la'
-            sh 'gcloud projects list'
+            //sh 'gcloud projects list'
             sh 'terraform init -var-file="../variables/dev.tfvars" '
             } //steps
         }  //stage
