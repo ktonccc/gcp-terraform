@@ -39,8 +39,8 @@ pipeline {
     
         stage('Terraform init ') {
          steps {
-            sh 'cd /usr/local/bin && terraform version'
-            //sh 'ls -la'
+            //sh 'cd /usr/local/bin && terraform version'
+            sh 'ls -la'
             //sh 'gcloud projects list'
             //sh 'terraform init -var-file="../variables/dev.tfvars" '
             } //steps
@@ -48,9 +48,9 @@ pipeline {
 
         stage('Terraform plan----') {
             steps {
-               sh 'cd bastion && ls -la'
-               sh 'cd bastion && gcloud projects list'
-               sh 'cd bastion && terraform plan  -refresh=true  -var-file="../variables/dev.tfvars" -lock=false'
+               sh 'ls -la'
+               //sh 'cd bastion && gcloud projects list'
+               //sh 'cd bastion && terraform plan  -refresh=true  -var-file="../variables/dev.tfvars" -lock=false'
             } //steps
         }  //stage
         
@@ -68,10 +68,10 @@ pipeline {
             script{  
                 if (params.ACCION == "destroy"){
                          sh ' echo "llego" + params.ACCION'   
-                         sh 'cd bastion && terraform destroy -var-file="../variables/dev.tfvars" -auto-approve'
+                         sh 'terraform destroy -var-file="../variables/dev.tfvars" -auto-approve'
                 } else {
                          sh ' echo  "llego" + params.ACCION'                 
-                         sh 'cd bastion && terraform apply -refresh=true -var-file="../variables/dev.tfvars"  -auto-approve'  
+                         sh 'terraform apply -refresh=true -var-file="../variables/dev.tfvars"  -auto-approve'  
                 }  // if
 
             }
