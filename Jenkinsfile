@@ -40,8 +40,8 @@ pipeline {
         stage('Terraform init ') {
          steps {
             sh 'pwd'
-            si 'terraform init'
-            si 'terraform apply'
+            sh 'terraform init'
+            sh 'terraform apply'
             sh 'cd /var/jenkins_home/workspace/terraform1701 && ls -la' 
             sh 'cd /var/jenkins_home/workspace/terraform1701 && terraform version'
             //sh 'gcloud projects list'
