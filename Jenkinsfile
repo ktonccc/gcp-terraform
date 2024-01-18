@@ -4,8 +4,8 @@ pipeline {
     environment {
         GOOGLE_PROJECT_ID = "esoteric-stream-410118" 
         GOOGLE_PROJECT_NAME = "My First Project"
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('sc_jenkins_terraform')
-        GOOGLE_CLOUD_KEYFILE_JSON = credentials('sc_jenkins_terraform')
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('service-account-total-control')
+        GOOGLE_CLOUD_KEYFILE_JSON = credentials('service-account-total-control')
     }
     parameters { 
       choice(name: 'ENTORNOS', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
