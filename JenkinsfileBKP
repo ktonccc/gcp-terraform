@@ -12,7 +12,6 @@ pipeline {
       choice(name: 'ACCION', choices: ['', 'plan-apply', 'destroy'], description: 'Seleccione el entorno a utilizar')
     }
     stages{
-        
         stage('clean workspaces -----------') { 
             steps {
               cleanWs()
