@@ -1,0 +1,105 @@
+
+Welcome to Cloud Shell! Type "help" to get started.
+Your Cloud Platform project in this session is set to esoteric-stream-410118.
+Use “gcloud config set project [PROJECT_ID]” to change to a different project.
+carlos_diaz_olivera@cloudshell:~ (esoteric-stream-410118)$ export PROJECT=$(gcloud info --format='value(config.project)')
+export SA_EMAIL=$(gcloud iam service-accounts list --filter="name:jenkins-gce" \
+ --format='value(email)')
+gcloud projects add-iam-policy-binding --member serviceAccount:$SA_EMAIL \
+ --role roles/compute.instanceAdmin $PROJECT
+gcloud projects add-iam-policy-binding --member serviceAccount:$SA_EMAIL \
+ --role roles/compute.networkAdmin $PROJECT
+gcloud projects add-iam-policy-binding --member serviceAccount:$SA_EMAIL \
+ --role roles/iam.serviceAccountUser $PROJECT
+ gcloud projects get-iam-policy $PROJEC
+Updated IAM policy for project [esoteric-stream-410118].
+bindings:
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/compute.instanceAdmin
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/compute.networkAdmin
+- members:
+  - serviceAccount:service-49144995709@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:49144995709-compute@developer.gserviceaccount.com
+  - serviceAccount:49144995709@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:sc-jenkins-terraform@esoteric-stream-410118.iam.gserviceaccount.com
+  - serviceAccount:service-account-total-control@esoteric-stream-410118.iam.gserviceaccount.com
+  - user:Carlos.Diaz.Olivera@gmail.com
+  role: roles/owner
+- members:
+  - serviceAccount:service-account-visitor@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/pubsub.admin
+etag: BwYQGs1Ps10=
+version: 1
+Updated IAM policy for project [esoteric-stream-410118].
+bindings:
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/compute.instanceAdmin
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/compute.networkAdmin
+- members:
+  - serviceAccount:service-49144995709@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:49144995709-compute@developer.gserviceaccount.com
+  - serviceAccount:49144995709@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:sc-jenkins-terraform@esoteric-stream-410118.iam.gserviceaccount.com
+  - serviceAccount:service-account-total-control@esoteric-stream-410118.iam.gserviceaccount.com
+  - user:Carlos.Diaz.Olivera@gmail.com
+  role: roles/owner
+- members:
+  - serviceAccount:service-account-visitor@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/pubsub.admin
+etag: BwYQGs1oLJk=
+version: 1
+Updated IAM policy for project [esoteric-stream-410118].
+bindings:
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/compute.instanceAdmin
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/compute.networkAdmin
+- members:
+  - serviceAccount:service-49144995709@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:49144995709-compute@developer.gserviceaccount.com
+  - serviceAccount:49144995709@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - serviceAccount:jenkins-gce@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:sc-jenkins-terraform@esoteric-stream-410118.iam.gserviceaccount.com
+  - serviceAccount:service-account-total-control@esoteric-stream-410118.iam.gserviceaccount.com
+  - user:Carlos.Diaz.Olivera@gmail.com
+  role: roles/owner
+- members:
+  - serviceAccount:service-account-visitor@esoteric-stream-410118.iam.gserviceaccount.com
+  role: roles/pubsub.admin
+etag: BwYQGs2BkYg=
+version: 1
+ERROR: (gcloud.projects.get-iam-policy) argument PROJECT_ID_OR_NUMBER: Must be specified.
+Usage: gcloud projects get-iam-policy PROJECT_ID_OR_NUMBER [optional flags]
+  optional flags may be  --filter | --help | --limit | --page-size | --sort-by
+
+For detailed information on this command and its flags, run:
+  gcloud projects get-iam-policy --help
+carlos_diaz_olivera@cloudshell:~ (esoteric-stream-410118)$ 
