@@ -42,8 +42,8 @@ pipeline {
             sh 'terraform init'
             //(sh 'cd /var/jenkins_home/workspace/terraform1701 && ls -la' 
             //sh 'cd /var/jenkins_home/workspace/terraform1701 && terraform version'
-            sh 'gcloud projects list'
-            //sh 'terraform init -var-file="../variables/dev.tfvars" '
+            //sh 'gcloud projects list'
+            sh 'terraform init -var-file="../variables/dev.tfvars" '
             } //steps
         }  //stage
 
