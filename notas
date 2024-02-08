@@ -1,7 +1,11 @@
 #para entrar al contenedor por Id
 docker exec -ti <contenedorId> /bin/bash
 
+
 gcloud projects list
+
+#github ejemplo
+https://github.com/agustinjaume/jenkins-terraform/blob/master/variables/dev.tfvars
 
 Para entrar como root a un contenedor docker
 docker exec -u 0 -it <containerId> bash

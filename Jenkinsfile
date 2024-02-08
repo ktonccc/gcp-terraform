@@ -44,7 +44,7 @@ pipeline {
             sh 'cd /var/jenkins_home/workspace/testTerraform && terraform version'
             //sh 'gcloud auth login'
             //sh 'gcloud projects list'
-            sh 'terraform init -var-file="../variables/dev.tfvars" '
+            sh 'terraform init -var-file="../dev.tfvars" '
             } //steps
         }  //stage
 
@@ -52,7 +52,7 @@ pipeline {
             steps {
                sh 'ls -la'
                //sh 'cd bastion && gcloud projects list'
-               sh 'terraform plan  -refresh=true  -var-file="../variables/dev.tfvars" -lock=false'
+               sh 'terraform plan  -refresh=true  -var-file="../dev.tfvars" -lock=false'
             } //steps
         }  //stage
         
