@@ -42,6 +42,7 @@ pipeline {
             sh 'terraform init'
             sh 'cd /var/jenkins_home/workspace/testTerraform && ls -la' 
             sh 'cd /var/jenkins_home/workspace/testTerraform && terraform version'
+            sh 'gcloud auth login'
             sh 'gcloud projects list'
             sh 'terraform init -var-file="../variables/dev.tfvars" '
             } //steps
