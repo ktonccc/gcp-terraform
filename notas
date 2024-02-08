@@ -1,0 +1,203 @@
+#para entrar al contenedor por Id
+docker exec -ti <contenedorId> /bin/bash
+
+gcloud projects list
+
+Para entrar como root a un contenedor docker
+docker exec -u 0 -it <containerId> bash
+
+#para instalar gcloud en contenedor de jenkins
+sudo apt-get update && sudo apt-get install google-cloud-cli
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && apt-get update -y && apt-get install google-cloud-sdk -y
+    
+
+gcp ip ext
+34.16.196.154
+
+#iniciar docker
+sudo systemctl start docker
+
+#cambiar a root user
+sudo su
+
+#descargr jenkins
+docker pull jenkins/jenkins
+docker pull jenkins/jenkins:lts-jdk17
+
+#instalaer jenkins
+docker run -p 8080:8080 -v jenkins_home:/var/jenkins_home --name jenkins_container jenkins/jenkins:lts-jdk17
+
+#para acceder a jenkins
+#crear regla de firewall para acceso a la instacia en GCP
+IpInstacia:8080
+34.125.192.184:8080
+
+2031d5ef9e08 conatiner jenkins docker
+
+#password jenkins
+dminPassword
+ecb05648d1be480f9321e207eead0fea
+ecb05648d1be480f9321e207eead0fea
+b1e76d481d70405191830a8f78aa1762
+9ea2d0b6d0af4b71bc47f3211e3f773b
+
+############
+#Vincula el repositorio local con GitHub
+git remote add origin https://github.com/ktonccc/gcp-ansible.git
+git remote add origin https://github.com/ktonccc/gcp-terraform.git
+######
+#token de git
+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
+##############################
+git remote set-url origin https://<tu-usuario>:<tu-token>@github.com/<tu-usuario>/<tu-repo>.git
+
+git remote set-url origin https://ktonccc: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@github.com/ktonccc/gcp-ansible.git
+git remote set-url origin https://ktonccc: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@github.com/ktonccc/gcp-terraform.git.git
+
+#########################
+
+ansible --version
+
+nano lamp.yml
+
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  become: yes
+
+  tasks:
+    - name: Install our packages
+      apt:
+        name: ['apache2', 'mysql-server', 'mysql-common', 'mysql-client']
+        state: present                
+        update_cache: true
+
+ansible-playbook lamp.yml
+
+nano lamp.yml
+
+- name: Confirm services are running
+      service:
+        name: "{{ item }}"
+        state: started
+      with_items:
+        - apache2
+        - mysql
+
+###########
+    - name: Restart Apache 
+      service:
+        name: apache2
+        state: restarted
+
+############
+- name: Install our packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: true
+
+
+- name: Confirm services are running
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items: "{{ services }}"
+
+
+- name: Enable Apache2 modssl
+  shell: a2enmod ssl
+
+
+- name: Enable Apache2 Default HTTPS site
+  shell: a2ensite default-ssl
+
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+
+##############
+vim ~/roles/lamp/handlers/main.yml
+
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+
+###########
+vim ~/roles/webapplication/defaults/main.yml
+---
+app_download_dest: /tmp/webapp
+app_dest: /var/www/webapp
+app_repo: https://github.com/cloudacademy/ansible_demo.git
+#app_repo:https://github.com/cloudacademy/ansible_demo.git
+
+###########
+vim :database.yml
+
+- apt: name=python-mysqldb state=present
+- mysql_user: name=appuser password=94nfsUl7 priv=*.*:ALL state=present
+- mysql_db: name=appdata state=present
+
+#####
+vim ~/roles/webapplication/tasks/app.yml
+- apt: name=libmysqlclient-dev state=present
+- apt: name=python-pip state=present
+- git: repo={{app_repo}} dest="{{app_download_dest}}"
+- pip: requirements={{app_download_dest}}/app/requirements.txt
+- copy: src={{app_download_dest}}/app/ dest={{app_dest}}
+
+#######
+vim ~/roles/webapplication/templates/apache.conf
+
+<VirtualHost *>
+    ServerName {{inventory_hostname}}
+
+    WSGIDaemonProcess webapp user=ubuntu group=ubuntu threads=5
+    WSGIScriptAlias / {{app_dest}}/wsgi.py
+
+    <Directory {{app_dest}}>
+        WSGIProcessGroup webapp
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+#######################
+vim ~/roles/webapplication/tasks/site.yml
+- apt: name=libapache2-mod-wsgi state=present
+- name: Copy the apache configuration file
+  template:
+    src: apache.conf
+    dest: /etc/apache2/sites-available/000-default.conf
+  notify: Restart Apache
+########
+vim ~/roles/webapplication/tasks/main.yml
+
+- include: database.yml
+- include: app.yml
+- include: site.yml
+
+
+
+#templates/apache.conf
+
+
+<VirtualHost *>
+    ServerName {{inventory_hostname}}
+
+    WSGIDaemonProcess webapp user=ubuntu group=ubuntu threads=5
+    WSGIScriptAlias / {{app_dest}}/wsgi.py
+
+    <Directory {{app_dest}}>
+        WSGIProcessGroup webapp
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
