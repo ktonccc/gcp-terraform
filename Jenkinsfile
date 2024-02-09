@@ -52,7 +52,7 @@ pipeline {
             steps {
                sh 'ls -la'
                //sh 'cd bastion && gcloud projects list'
-               sh 'terraform plan  -refresh=true  -var-file="../dev.tfvars" -lock=false'
+               sh 'terraform plan  -refresh=true  -lock=false'
             } //steps
         }  //stage
         
