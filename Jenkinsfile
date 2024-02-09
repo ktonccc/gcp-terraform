@@ -52,7 +52,7 @@ pipeline {
             steps {
                sh 'ls -la'
                //sh 'cd bastion && gcloud projects list'
-               sh 'terraform plan  -refresh=true  -var-file="../var/jenkins_home/workspace/testTerraform/dev.tfvars" -lock=false'
+               sh 'terraform plan  -refresh=true  -var-file="../dev.tfvars" -lock=false'
             } //steps
         }  //stage
         
@@ -70,10 +70,10 @@ pipeline {
             script{  
                 if (params.ACCION == "destroy"){
                          sh ' echo "llego" + params.ACCION'   
-                         sh 'terraform destroy -var-file="../var/jenkins_home/workspace/testTerraform/dev.tfvars" -auto-approve'
+                         sh 'terraform destroy -var-file="../dev.tfvars" -auto-approve'
                 } else {
                          sh ' echo  "llego" + params.ACCION'                 
-                         sh 'terraform apply -refresh=true -var-file="../var/jenkins_home/workspace/testTerraform/dev.tfvars"  -auto-approve'  
+                         sh 'terraform apply -refresh=true -var-file="../dev.tfvars"  -auto-approve'  
                 }  // if
 
             }
