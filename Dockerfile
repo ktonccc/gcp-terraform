@@ -24,12 +24,12 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
     apt-get install google-cloud-sdk -y
 
 # Instala plugins de Jenkins para Terraform y Google Cloud
-RUN /usr/local/bin/install-plugins.sh \
-    workflow-aggregator \
-    git \
-    ssh-slaves \
-    terraform \
-    google-cloud-sdk
+#RUN /usr/local/bin/install-plugins.sh \
+#    workflow-aggregator \
+#    git \
+#    ssh-slaves \
+#    terraform \
+#    google-cloud-sdk
 
 # Establece la configuración por defecto de Jenkins
 COPY config/jenkins-settings/* /usr/share/jenkins/ref/
