@@ -3,7 +3,7 @@ docker build -t my-jenkins-terraform-gcloud .
 
 #para entrar al contenedor por Id
 docker exec -ti <contenedorId> /bin/bash 
-docker exec -ti 31108cf62f03 /bin/bash
+docker exec -ti 92876ff2c6de /bin/bash
 
 gcloud projects list
 
