@@ -1,6 +1,9 @@
-#para entrar al contenedor por Id
-docker exec -ti <contenedorId> /bin/bash
+#para ejecutar el docker file
+docker build -t my-jenkins-terraform-gcloud .
 
+#para entrar al contenedor por Id
+docker exec -ti <contenedorId> /bin/bash 
+docker exec -ti 31108cf62f03 /bin/bash
 
 gcloud projects list
 
@@ -40,10 +43,8 @@ IpInstacia:8080
 
 #password jenkins
 dminPassword
-ecb05648d1be480f9321e207eead0fea
-ecb05648d1be480f9321e207eead0fea
-b1e76d481d70405191830a8f78aa1762
-9ea2d0b6d0af4b71bc47f3211e3f773b
+1f40b4e4ab4b4e36a38c30a23b0e5e69
+
 
 ############
 #Vincula el repositorio local con GitHub

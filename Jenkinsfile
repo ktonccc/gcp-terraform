@@ -40,8 +40,8 @@ pipeline {
          steps {
             sh 'pwd'
             sh 'terraform init'
-            sh 'cd /var/jenkins_home/workspace/testTerraform && ls -la' 
-            sh 'cd /var/jenkins_home/workspace/testTerraform && terraform version'
+            sh 'cd /var/jenkins_home/workspace/terraformtest && ls -la' 
+            sh 'cd /var/jenkins_home/workspace/terraformtest && terraform version'
             //sh 'gcloud auth login'
             //sh 'gcloud projects list'
             sh 'terraform init -var-file="../dev.tfvars"'
